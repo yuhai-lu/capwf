@@ -1,0 +1,12 @@
+@server=http://localhost:4004
+@username=alice
+@password=
+
+### Books Submit action on an existing active Book (ID=201)
+# @NAME Books_Submit_Existing
+POST {{server}}/odata/v4/admin/Books(ID=201,IsActiveEntity=true)/AdminService.submit
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+{}

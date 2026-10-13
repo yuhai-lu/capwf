@@ -13,5 +13,9 @@ module.exports = class AdminService extends cds.ApplicationService { init() {
     const { ID:id2 } = await SELECT.one.from(Books.drafts).columns('max(ID) as ID')
     req.data.ID = Math.max(id1||0, id2||0) + 1
   })
+  this.on('submit', Books, async (req) => {
+      // console.log(req)
+      return req.subject
+    })
   return super.init()
 }}
