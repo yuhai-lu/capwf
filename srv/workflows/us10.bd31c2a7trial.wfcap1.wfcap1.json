@@ -1,0 +1,100 @@
+{
+  "uid": "5a99c816-ae6c-4f38-ae50-81dbbeae67e1",
+  "name": "wfcap1",
+  "description": "",
+  "type": "bpi.process",
+  "createdAt": "2026-10-13T19:31:39.688474Z",
+  "updatedAt": "2026-10-13T19:58:11.306370Z",
+  "header": {
+    "inputs": {
+      "title": "inputs",
+      "type": "object",
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "definitions": {
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "dateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "password": {
+          "type": "string",
+          "password": true
+        },
+        "time": {
+          "type": "string",
+          "format": "time"
+        },
+        "documentFolder": {
+          "type": "string",
+          "format": "document-folder"
+        }
+      },
+      "properties": {
+        "author": {
+          "type": "string",
+          "title": "author",
+          "description": "author"
+        },
+        "currency": {
+          "type": "string",
+          "title": "currency",
+          "description": "currency"
+        },
+        "desc": {
+          "type": "string",
+          "title": "desc",
+          "description": "desc"
+        },
+        "id": {
+          "type": "string",
+          "title": "id",
+          "description": "id"
+        },
+        "price": {
+          "type": "number",
+          "title": "price",
+          "description": "price"
+        },
+        "stock": {
+          "type": "number",
+          "title": "stock",
+          "description": "stock"
+        },
+        "title": {
+          "type": "string",
+          "title": "title",
+          "description": "title"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "outputs": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "outputs",
+      "type": "object",
+      "properties": {}
+    },
+    "processAttributes": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "processAttributes",
+      "type": "object",
+      "properties": {},
+      "required": []
+    }
+  },
+  "dependencies": [
+    {
+      "artifactUid": "cdcd64e0-74ea-4a3f-970a-52e8ada0ac15",
+      "type": "content"
+    }
+  ],
+  "identifier": "wfcap1",
+  "valid": true,
+  "projectId": "us10.bd31c2a7trial.wfcap1",
+  "dataTypes": []
+}

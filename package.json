@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "dependencies": {
     "@cap-js/process": "^0.2.1",
-    "@sap/cds": "^9"
+    "@sap/cds": "^9",
+    "@sap-cloud-sdk/connectivity": "^4",
+    "@sap-cloud-sdk/http-client": "^4",
+    "@sap-cloud-sdk/resilience": "^4"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^2"
@@ -21,6 +24,10 @@
         "[production]": {
           "model": "db/hana"
         }
+      },
+      "us10.bd31c2a7trial.wfcap1.Wfcap1Service": {
+        "kind": "process-service",
+        "model": "srv/external/us10.bd31c2a7trial.wfcap1.wfcap1"
       }
     }
   }
