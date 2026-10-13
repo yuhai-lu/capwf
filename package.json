@@ -2,6 +2,7 @@
   "name": "capwf",
   "version": "1.0.0",
   "dependencies": {
+    "@cap-js/process": "^0.2.1",
     "@sap/cds": "^9"
   },
   "devDependencies": {
