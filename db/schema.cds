@@ -13,6 +13,7 @@ entity Books : managed {
       title    : localized String       @mandatory;
       descr    : localized String;
       genre    : Association to Genres;
+      status   : String default 'For Approval';
       stock    : Integer;
       price    : Price;
       currency : Currency;

@@ -1,4 +1,4 @@
-@server=http://localhost:4004
+@server=http://192.168.71.89:4004
 @username=alice
 @password=
 
@@ -10,3 +10,25 @@ Authorization: Basic {{username}}:{{password}}
 
 
 {}
+
+### Approve an existing Book (ID=201)
+# @NAME Books_Approve_Existing
+POST {{server}}/odata/v4/admin/Books(ID=201,IsActiveEntity=true)/AdminService.ApproveBooks
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+{
+  "ID": 201
+}
+
+### Reject an existing Book (ID=201)
+# @NAME Books_Reject_Existing
+POST {{server}}/odata/v4/admin/Books(ID=201,IsActiveEntity=true)/AdminService.RejectBooks
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+{
+  "ID": 201
+}
