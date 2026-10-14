@@ -10,6 +10,10 @@ using from '../common'; // to help UI linter get the complete annotations
 
 annotate AdminService.Books with @(
   UI: {
+    Identification: [
+      {Value: title},
+      {$Type: 'UI.DataFieldForAction', Action: 'AdminService.submit', Label: '{i18n>Submit}'}
+    ],
     Facets: [
       {$Type: 'UI.ReferenceFacet', Label: '{i18n>General}', Target: '@UI.FieldGroup#General'},
       {$Type: 'UI.ReferenceFacet', Label: '{i18n>Translations}', Target:  'texts/@UI.LineItem'},
