@@ -24,7 +24,8 @@ service CatalogService {
     excluding {
       createdBy,
       modifiedBy
-    };
+    }
+    where status = 'Approved';
 
   @requires: 'authenticated-user'
   action submitOrder(book: Books:ID, quantity: Integer) returns {

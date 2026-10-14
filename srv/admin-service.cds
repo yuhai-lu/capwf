@@ -24,8 +24,9 @@ service AdminService {
     author.name           as authorName  : String,
     genre.name            as genreName   : String,
     currency.code         as currencyCode: String
-  }
-  actions {
+  } actions {
+    action ApproveBooks(ID: Integer);
+    action RejectBooks(ID: Integer);
     action submit();
   };
   entity Genres  as projection on my.Genres;

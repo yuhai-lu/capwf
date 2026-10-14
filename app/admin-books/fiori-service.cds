@@ -14,6 +14,11 @@ annotate AdminService.Books with @(
       {Value: title},
       {$Type: 'UI.DataFieldForAction', Action: 'AdminService.submit', Label: '{i18n>Submit}'}
     ],
+    LineItem: [
+      {Value: title},
+      {Value: authorName},
+      {Value: status, Label: 'Status'}
+    ],
     Facets: [
       {$Type: 'UI.ReferenceFacet', Label: '{i18n>General}', Target: '@UI.FieldGroup#General'},
       {$Type: 'UI.ReferenceFacet', Label: '{i18n>Translations}', Target:  'texts/@UI.LineItem'},
@@ -25,6 +30,7 @@ annotate AdminService.Books with @(
         {Value: title},
         {Value: author_ID},
         {Value: genre_ID},
+        {Value: status, Label: 'Status'},
         {Value: descr},
       ]
     },
