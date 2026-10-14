@@ -19,12 +19,41 @@ modules:
       buildpack: nodejs_buildpack
     build-parameters:
       builder: npm-ci
+    requires:
+      - name: cap-wf-spa
     provides:
       - name: srv-api # required by consumers of CAP services (e.g. approuter)
         properties:
           srv-url: ${default-url}
+  - name: capwf
+    type: approuter.nodejs
+    path: app/router
+    parameters:
+      keep-existing-routes: true
+      disk-quota: 256M
+      memory: 256M
     requires:
-      []
+      - name: srv-api
+        group: destinations
+        properties:
+          name: srv-api # must be used in xs-app.json as well
+          url: ~{srv-url}
+          forwardAuthToken: true
+    provides:
+      - name: app-api
+        properties:
+          app-protocol: ${protocol}
+          app-uri: ${default-uri}
 
 resources:
-  []
+  - name: cap-wf-spa
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: process-automation
+      service-plan: standard
+  - name: cap-wf-spa-key
+    type: org.cloudfoundry.service-key
+    parameters:
+      service-instance: cap-wf-spa
+      service-key:
+        name: cap-wf-spa-key
