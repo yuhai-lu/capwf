@@ -1,0 +1,28 @@
+{
+  "xsappname": "capwf-${org}-${space}",
+  "tenant-mode": "dedicated",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.admin",
+      "description": "CAPWF administrator"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "admin",
+      "description": "CAPWF administrator",
+      "scope-references": [
+        "$XSAPPNAME.admin"
+      ]
+    }
+  ],
+  "role-collections": [
+    {
+      "name": "CapwfAdmin",
+      "description": "CAPWF administrators",
+      "role-template-references": [
+        "$XSAPPNAME.admin"
+      ]
+    }
+  ]
+}
