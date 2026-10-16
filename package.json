@@ -19,6 +19,9 @@
   "private": true,
   "cds": {
     "requires": {
+      "auth": {
+        "kind": "dummy"
+      },
       "db": {
         "[development]": {
           "model": "db/sqlite"

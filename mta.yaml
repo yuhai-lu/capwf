@@ -22,7 +22,6 @@ modules:
     requires:
       - name: capwf-db
       - name: cap-wf-spa
-      - name: capwf-uaa
     provides:
       - name: srv-api # required by consumers of CAP services (e.g. approuter)
         properties:
@@ -42,13 +41,11 @@ modules:
       disk-quota: 256M
       memory: 256M
     requires:
-      - name: capwf-uaa
       - name: srv-api
         group: destinations
         properties:
           name: srv-api # must be used in xs-app.json as well
           url: ~{srv-url}
-          forwardAuthToken: true
     provides:
       - name: app-api
         properties:
@@ -56,12 +53,6 @@ modules:
           app-uri: ${default-uri}
 
 resources:
-  - name: capwf-uaa
-    type: org.cloudfoundry.managed-service
-    parameters:
-      service: xsuaa
-      service-plan: application
-      path: ./xs-security.json
   - name: capwf-db
     type: com.sap.xs.hdi-container
     parameters:
