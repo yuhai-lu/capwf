@@ -68,13 +68,7 @@ resources:
       service: hana
       service-plan: hdi-shared
   - name: cap-wf-spa
-    type: org.cloudfoundry.managed-service
+    type: org.cloudfoundry.existing-service
     parameters:
       service: process-automation
       service-plan: standard
-  - name: cap-wf-spa-key
-    type: org.cloudfoundry.service-key
-    parameters:
-      service-instance: cap-wf-spa
-      service-key:
-        name: cap-wf-spa-key

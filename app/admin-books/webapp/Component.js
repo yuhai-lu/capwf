@@ -1,3 +1,3 @@
-sap.ui.define(["sap/fe/core/AppComponent"], ac => ac.extend("capwf.admin-books.Component", {
+sap.ui.define(["sap/fe/core/AppComponent"], ac => ac.extend("capwf.adminbooks.Component", {
   metadata:{ manifest:'json' }
 }))

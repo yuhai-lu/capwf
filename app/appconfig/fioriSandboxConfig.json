@@ -102,7 +102,7 @@
               },
               "resolutionResult": {
                 "applicationType": "SAPUI5",
-                "additionalInformation": "SAPUI5.Component=capwf.admin-authors",
+                "additionalInformation": "SAPUI5.Component=capwf.adminauthors",
                 "url": "/admin-authors/webapp"
               }
             },
@@ -134,7 +134,7 @@
               },
               "resolutionResult": {
                 "applicationType": "SAPUI5",
-                "additionalInformation": "SAPUI5.Component=capwf.admin-books",
+                "additionalInformation": "SAPUI5.Component=capwf.adminbooks",
                 "url": "/admin-books/webapp"
               }
             }

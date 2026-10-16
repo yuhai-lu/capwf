@@ -1,5 +1,12 @@
 {
+  "welcomeFile": "/fiori-apps.html#Shell-home",
   "routes": [
+    {
+      "source": "^/(fiori-apps\\.html|appconfig/[^?]*|admin-authors/[^?]*|admin-books/[^?]*|browse/[^?]*|genres/[^?]*)(?:\\?.*)?$",
+      "target": "$1",
+      "localDir": "resources",
+      "authenticationType": "xsuaa"
+    },
     {
       "source": "^/(.*)$",
       "target": "$1",

@@ -1,7 +1,7 @@
 {
   "_version": "1.28.0",
   "sap.app": {
-    "id": "capwf.admin-authors",
+    "id": "capwf.adminauthors",
     "type": "application",
     "title": "{{appTitle}}",
     "description": "{{appDescription}}",
@@ -11,7 +11,7 @@
     },
     "dataSources": {
       "AdminService": {
-        "uri": "odata/v4/admin/",
+        "uri": "/odata/v4/admin/",
         "type": "OData",
         "settings": {
           "odataVersion": "4.0"
