@@ -2,11 +2,12 @@
   "name": "capwf",
   "version": "1.0.0",
   "dependencies": {
+    "@cap-js/hana": "^2.8.3",
     "@cap-js/process": "^0.2.1",
-    "@sap/cds": "^9",
     "@sap-cloud-sdk/connectivity": "^4",
     "@sap-cloud-sdk/http-client": "^4",
-    "@sap-cloud-sdk/resilience": "^4"
+    "@sap-cloud-sdk/resilience": "^4",
+    "@sap/cds": "^9"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^2",
@@ -18,7 +19,10 @@
   "private": true,
   "cds": {
     "requires": {
-      "db-ext": {
+      "auth": {
+        "kind": "dummy"
+      },
+      "db": {
         "[development]": {
           "model": "db/sqlite"
         },

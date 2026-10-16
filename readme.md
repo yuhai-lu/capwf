@@ -13,6 +13,7 @@ It contains these folders and files, following our recommended project layout:
 
 ## Next Steps
 
+- Deployment is intentionally unauthenticated: the Launchpad, admin UI, and OData APIs are publicly accessible.
 - cds login -a   ***btp endpoint*** -u ***User***
 - cds bind ProcessService -2 <service-instance></service>***Service Instance***
 - Open a new terminal and run cds watch --profile hybrid

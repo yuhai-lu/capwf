@@ -1,10 +1,16 @@
 {
+  "welcomeFile": "/fiori-apps.html#Shell-home",
+  "authenticationMethod": "none",
   "routes": [
+    {
+      "source": "^/(fiori-apps\\.html|appconfig/[^?]*|admin-authors/[^?]*|admin-books/[^?]*|browse/[^?]*|genres/[^?]*)(?:\\?.*)?$",
+      "target": "$1",
+      "localDir": "resources"
+    },
     {
       "source": "^/(.*)$",
       "target": "$1",
       "destination": "srv-api",
-      "authenticationType": "xsuaa",
       "csrfProtection": true
     }
   ]
