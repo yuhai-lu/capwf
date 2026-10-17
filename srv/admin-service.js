@@ -14,8 +14,35 @@ module.exports = class AdminService extends cds.ApplicationService { init() {
     req.data.ID = Math.max(id1||0, id2||0) + 1
   })
   this.on('submit', Books, async (req) => {
-      // console.log(req)
-      return req.subject
+      const { executeHttpRequest } = require('@sap-cloud-sdk/http-client');
+      console.log('executeHttpRequest is successfult got')
+      const { ID } = req.data
+      const book = await SELECT.one.from(Books).where({ ID })
+        .columns('authorName', 'currencyCode', 'descr', 'idStr', 'price', 'stock', 'title')
+      if (!book) return req.error(404, `Book #${ID} does not exist`)
+      console.log('Submitting book to workflow engine:', book)
+      const res = await executeHttpRequest(
+        { destinationName: 'process_automation_cap2bpa' },
+        {
+          method: 'POST',
+          url: '/v1/workflow-instances',
+          data: {
+            definitionId: 'us10.bd31c2a7trial.wfcap1.wfcap1',
+            context: {
+              author: book.authorName,
+              currency: book.currencyCode,
+              desc: book.descr,
+              id: book.idStr,
+              price: book.price,
+              stock: book.stock,
+              title: book.title
+            }
+        }
+      },
+      { fetchCsrfToken: false }
+      );
+      console.log('Workflow engine response:', res)
+      return res;
     })
   this.on('ApproveBooks', Books, async req => {
     const { ID } = req.data

@@ -11,8 +11,7 @@ using from '../common'; // to help UI linter get the complete annotations
 annotate AdminService.Books with @(
   UI: {
     Identification: [
-      {Value: title},
-      {$Type: 'UI.DataFieldForAction', Action: 'AdminService.submit', Label: '{i18n>Submit}'}
+      {Value: title}
     ],
     LineItem: [
       {Value: title},
