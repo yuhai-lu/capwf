@@ -20,7 +20,9 @@ Content-Type: application/json
 Authorization: Basic {{username}}:{{password}}
 
 
-{}
+{
+  "ID": 201
+}
 
 ### Approve an existing Book (ID=201)
 # @NAME Books_Approve_Existing
