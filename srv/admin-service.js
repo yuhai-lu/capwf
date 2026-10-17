@@ -13,7 +13,7 @@ module.exports = class AdminService extends cds.ApplicationService { init() {
     const { ID:id2 } = await SELECT.one.from(Books.drafts).columns('max(ID) as ID')
     req.data.ID = Math.max(id1||0, id2||0) + 1
   })
-  this.on('submit', Books, async (req) => {
+  this.on('request_trigger_wf', Books, async (req) => {
       const { executeHttpRequest } = require('@sap-cloud-sdk/http-client');
       console.log('executeHttpRequest is successfult got')
       const { ID } = req.data
@@ -44,6 +44,7 @@ module.exports = class AdminService extends cds.ApplicationService { init() {
       console.log('Workflow engine response:', res)
       return res;
     })
+  this.on('annotation_trigger_wf', Books, async req => req.subject)
   this.on('ApproveBooks', Books, async req => {
     const { ID } = req.data
     if (ID == null) return req.error(400, 'ID is required')
