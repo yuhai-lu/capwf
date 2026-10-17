@@ -99,9 +99,13 @@
               "content": {
                 "header": {
                   "actions": {
-                    "Submit": {
-                      "press": "capwf.adminbooks.ext.CustomActions.submit",
-                      "text": "{{Submit}}"
+                    "request_trigger_wf": {
+                      "press": "capwf.adminbooks.ext.CustomActions.request_trigger_wf",
+                      "text": "{{request_trigger_wf}}"
+                    },
+                    "annotation_trigger_wf": {
+                      "press": "capwf.adminbooks.ext.CustomActions.annotation_trigger_wf",
+                      "text": "{{annotation_trigger_wf}}"
                     }
                   }
                 }
