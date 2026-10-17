@@ -95,7 +95,17 @@
           "name": "sap.fe.templates.ObjectPage",
           "options": {
             "settings": {
-              "entitySet": "Books"
+              "entitySet": "Books",
+              "content": {
+                "header": {
+                  "actions": {
+                    "Submit": {
+                      "press": "capwf.adminbooks.ext.CustomActions.submit",
+                      "text": "{{Submit}}"
+                    }
+                  }
+                }
+              }
             }
           }
         }
