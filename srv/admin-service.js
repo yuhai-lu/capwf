@@ -8,17 +8,34 @@ module.exports = class AdminService extends cds.ApplicationService { init() {
    * Generate IDs for new Books drafts
    */
   this.before ('NEW', Books.drafts, async (req) => {
-    if (req.data.ID) return
-    const { ID:id1 } = await SELECT.one.from(Books).columns('max(ID) as ID')
-    const { ID:id2 } = await SELECT.one.from(Books.drafts).columns('max(ID) as ID')
-    req.data.ID = Math.max(id1||0, id2||0) + 1
+    if (req.data.ID != null) return
+
+    const [books, drafts] = await Promise.all([
+      SELECT.from(Books).columns('ID'),
+      SELECT.from(Books.drafts).columns('ID')
+    ])
+    let maxID = 0
+    for (const { ID } of [...books, ...drafts]) {
+      if (ID == null || String(ID).trim() === '') {
+        return req.error(500, 'Cannot generate a numeric book ID from an empty ID')
+      }
+      const numericID = Number(ID)
+      if (!Number.isSafeInteger(numericID) || numericID < 0) {
+        return req.error(500, `Cannot generate a numeric book ID from "${ID}"`)
+      }
+      maxID = Math.max(maxID, numericID)
+    }
+    if (maxID >= Number.MAX_SAFE_INTEGER) {
+      return req.error(500, 'Cannot generate a book ID beyond the maximum safe integer')
+    }
+    req.data.ID = String(maxID + 1)
   })
   this.on('request_trigger_wf', Books, async (req) => {
       const { executeHttpRequest } = require('@sap-cloud-sdk/http-client');
       console.log('executeHttpRequest is successfult got')
       const { ID } = req.data
       const book = await SELECT.one.from(Books).where({ ID })
-        .columns('authorName', 'currencyCode', 'descr', 'idStr', 'price', 'stock', 'title')
+        .columns('authorName', 'currencyCode', 'descr', 'price', 'stock', 'title')
       if (!book) return req.error(404, `Book #${ID} does not exist`)
       console.log('Submitting book to workflow engine:', book)
       const res = await executeHttpRequest(
@@ -32,7 +49,7 @@ module.exports = class AdminService extends cds.ApplicationService { init() {
               author: book.authorName,
               currency: book.currencyCode,
               desc: book.descr,
-              id: book.idStr,
+              id: ID,
               price: book.price,
               stock: book.stock,
               title: book.title

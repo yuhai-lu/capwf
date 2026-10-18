@@ -21,7 +21,7 @@ modules:
       builder: npm-ci
     requires:
       - name: capwf-db
-      - name: cap-wf-spa
+      - name: capwf-bpa-instance
       - name: process_automation_cap2bpa
     provides:
       - name: srv-api # required by consumers of CAP services (e.g. approuter)
@@ -59,10 +59,10 @@ resources:
     parameters:
       service: hana
       service-plan: hdi-shared
-  - name: cap-wf-spa
-    type: org.cloudfoundry.existing-service
+  - name: capwf-bpa-instance
+    type: org.cloudfoundry.managed-service
     parameters:
-      service: process-automation
+      service: process-automation-service
       service-plan: standard
   - name: process_automation_cap2bpa
     type: org.cloudfoundry.managed-service

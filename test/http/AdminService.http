@@ -4,44 +4,44 @@
 
 ### Request a workflow trigger for an existing active Book (ID=201)
 # @NAME Books_Request_Trigger_Wf_Existing
-POST {{server}}/odata/v4/admin/Books(ID=201,IsActiveEntity=true)/AdminService.request_trigger_wf
+POST {{server}}/odata/v4/admin/Books(ID='201',IsActiveEntity=true)/AdminService.request_trigger_wf
 Content-Type: application/json
 Authorization: Basic {{username}}:{{password}}
 
 
 {
-  "ID": 201
+  "ID": "201"
 }
 
 ### Trigger a workflow for an existing active Book using the process annotation
 # @NAME Books_Annotation_Trigger_Wf_Existing
-POST {{server}}/odata/v4/admin/Books(ID=201,IsActiveEntity=true)/AdminService.annotation_trigger_wf
+POST {{server}}/odata/v4/admin/Books(ID='201',IsActiveEntity=true)/AdminService.annotation_trigger_wf
 Content-Type: application/json
 Authorization: Basic {{username}}:{{password}}
 
 
 {
-  "ID": 201
+  "ID": "201"
 }
 
 ### Approve an existing Book (ID=201)
 # @NAME Books_Approve_Existing
-POST {{server}}/odata/v4/admin/Books(ID=201,IsActiveEntity=true)/AdminService.ApproveBooks
+POST {{server}}/odata/v4/admin/Books(ID='201',IsActiveEntity=true)/AdminService.ApproveBooks
 Content-Type: application/json
 Authorization: Basic {{username}}:{{password}}
 
 
 {
-  "ID": 201
+  "ID": "201"
 }
 
 ### Reject an existing Book (ID=201)
 # @NAME Books_Reject_Existing
-POST {{server}}/odata/v4/admin/Books(ID=201,IsActiveEntity=true)/AdminService.RejectBooks
+POST {{server}}/odata/v4/admin/Books(ID='201',IsActiveEntity=true)/AdminService.RejectBooks
 Content-Type: application/json
 Authorization: Basic {{username}}:{{password}}
 
 
 {
-  "ID": 201
+  "ID": "201"
 }
