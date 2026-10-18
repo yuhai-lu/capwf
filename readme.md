@@ -1,57 +1,20 @@
-Purpose:
+# Purpose:
+CAP -> BPA Workflow
+BPA Workflow -> CAP
+cds
 
-Test Request trigger workflow
+Excel to be done later
 
-Demo Steps
+# Steps
+1. Check HANA status [link](https://bd31c2a7trial.hana-tooling.ingress.orchestration.prod-us10.hanacloud.ondemand.com/)
+2. Trigger WF in WF: Click [link](https://bd31c2a7trial-dev-capwf.cfapps.us10-001.hana.ondemand.com/fiori-apps.html#Books-manage)
+   Click one book into object page
+3. Click button **Trigger Workflow via Annotation**
+4. Check the Workflow created [link](https://bd31c2a7trial.us10.build.cloud.sap/monitoring/workflow-instances?~status=ERRONEOUS,RUNNING,SUSPENDED&~type=process)
+5. Inter [Inbox](https://bd31c2a7trial.us10.process-automation.build.cloud.sap/comsapspaprocessautomation.comsapspainbox/inbox.html) to check approvement
+6. Approve or Reject.
+7. Check [UI](https://bd31c2a7trial-dev-capwf.cfapps.us10-001.hana.ondemand.com/fiori-apps.html#Books-manage), the status is updated.
 
-```
-git clone https://github.com/yuhai-lyu/capwf
-git checkout request_trigger_wf
-cds login -a https://api.cf.us10-001.hana.ondemand.com -u yuhai_lyu@foxmail.com
-cds bind ProcessService -2 capwf-bpa-instance
-cds watch --profile hybrid
-```
-
-* 检查URL [Workflow Log Palge Link](https://bd31c2a7trial.us10.build.cloud.sap/monitoring/workflow-instances) record how many workflow instances there.
-* Back to Page [Link](http://localhost:4004/fiori-apps.html#Books-manage&/Books('207'))
-* click **Request Trigger Workflow** or **Trigger Workflow via Annotation**
-* Check [Workflow Log Palge Link](https://bd31c2a7trial.us10.build.cloud.sap/monitoring/workflow-instances) there should be one more Workflow Instance.
-* Click the new instance, the check steps
-* Enter Inbox, Approve
-* Check email in [QQ Mail Box](https://wx.mail.qq.com/) for notice mail
-* Check source code
-
-```
-     const { executeHttpRequest } = require('@sap-cloud-sdk/http-client');
-      console.log('executeHttpRequest is successfult got')
-      const { ID } = req.data
-      const book = await SELECT.one.from(Books).where({ ID })
-        .columns('authorName', 'currencyCode', 'descr', 'price', 'stock', 'title')
-      if (!book) return req.error(404, `Book #${ID} does not exist`)
-      console.log('Submitting book to workflow engine:', book)
-      const res = await executeHttpRequest(
-        { destinationName: 'process_automation_cap2bpa' },
-        {
-          method: 'POST',
-          url: '/v1/workflow-instances',
-          data: {
-            definitionId: 'us10.bd31c2a7trial.wfcap1.wfcap1',
-            context: {
-              author: book.authorName,
-              currency: book.currencyCode,
-              desc: book.descr,
-              id: ID,
-              price: book.price,
-              stock: book.stock,
-              title: book.title
-            }
-        }
-      },
-      { fetchCsrfToken: false }
-      );
-      console.log('Workflow engine response:', res)
-      return res;
-```
 
 # Getting Started
 
