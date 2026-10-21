@@ -20,7 +20,10 @@
   "cds": {
     "requires": {
       "auth": {
-        "kind": "dummy"
+        "kind": "xsuaa",
+        "[development]": {
+          "kind": "dummy"
+        }
       },
       "db": {
         "[development]": {

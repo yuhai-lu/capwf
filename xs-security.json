@@ -1,0 +1,36 @@
+{
+  "xsappname": "capwf-srv",
+  "tenant-mode": "dedicated",
+  "oauth2-configuration": {
+    "redirect-uris": [
+      "https://bd31c2a7trial-dev-capwf.cfapps.us10-001.hana.ondemand.com/login/callback"
+    ]
+  },
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.bookshop_administrator",
+      "description": "Administrator access to the bookshop administration service"
+    }
+  ],
+  "authorities": [
+    "$XSAPPNAME.bookshop_administrator"
+  ],
+  "role-templates": [
+    {
+      "name": "bookshop_administrator",
+      "description": "Bookshop administrator",
+      "scope-references": [
+        "$XSAPPNAME.bookshop_administrator"
+      ]
+    }
+  ],
+  "role-collections": [
+    {
+      "name": "Bookshop Administrator",
+      "description": "Access to the bookshop administration service",
+      "role-template-references": [
+        "$XSAPPNAME.bookshop_administrator"
+      ]
+    }
+  ]
+}

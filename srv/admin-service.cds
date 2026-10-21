@@ -1,4 +1,5 @@
 using {sap.capire.bookshop as my} from '../db/schema';
+@requires: 'bookshop_administrator'
 service AdminService {
   entity Authors as projection on my.Authors;
   @bpm.process.start: {
@@ -19,8 +20,6 @@ service AdminService {
     genre.name            as genreName   : String,
     currency.code         as currencyCode: String,
   } actions {
-    action ApproveBooks(ID: String);
-    action RejectBooks(ID: String);
     action request_trigger_wf(ID: String);
     action annotation_trigger_wf();
   };

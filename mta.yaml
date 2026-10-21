@@ -23,6 +23,7 @@ modules:
       - name: capwf-db
       - name: capwf-bpa-instance
       - name: process_automation_cap2bpa
+      - name: capwf-auth
     provides:
       - name: srv-api # required by consumers of CAP services (e.g. approuter)
         properties:
@@ -42,11 +43,13 @@ modules:
       disk-quota: 256M
       memory: 256M
     requires:
+      - name: capwf-auth
       - name: srv-api
         group: destinations
         properties:
           name: srv-api # must be used in xs-app.json as well
           url: ~{srv-url}
+          forwardAuthToken: true
     provides:
       - name: app-api
         properties:
@@ -69,3 +72,9 @@ resources:
     parameters:
       service: destination
       service-plan: lite
+  - name: capwf-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
