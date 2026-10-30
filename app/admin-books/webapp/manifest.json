@@ -97,6 +97,18 @@
             "settings": {
               "entitySet": "Books",
               "content": {
+                "body": {
+                  "sections": {
+                    "PrintPreviewSection": {
+                      "template": "capwf.adminbooks.ext.fragment.PrintPreview",
+                      "title": "{{printPreview}}",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "Admin"
+                      }
+                    }
+                  }
+                },
                 "header": {
                   "actions": {
                     "request_trigger_wf": {

@@ -19,10 +19,10 @@ annotate AdminService.Books with @(
       {Value: status, Label: 'Status'}
     ],
     Facets: [
-      {$Type: 'UI.ReferenceFacet', Label: '{i18n>General}', Target: '@UI.FieldGroup#General'},
-      {$Type: 'UI.ReferenceFacet', Label: '{i18n>Translations}', Target:  'texts/@UI.LineItem'},
-      {$Type: 'UI.ReferenceFacet', Label: '{i18n>Details}', Target: '@UI.FieldGroup#Details'},
-      {$Type: 'UI.ReferenceFacet', Label: '{i18n>Admin}', Target: '@UI.FieldGroup#Admin'},
+      {$Type: 'UI.ReferenceFacet', ID: 'General', Label: '{i18n>General}', Target: '@UI.FieldGroup#General'},
+      {$Type: 'UI.ReferenceFacet', ID: 'Translations', Label: '{i18n>Translations}', Target:  'texts/@UI.LineItem'},
+      {$Type: 'UI.ReferenceFacet', ID: 'Details', Label: '{i18n>Details}', Target: '@UI.FieldGroup#Details'},
+      {$Type: 'UI.ReferenceFacet', ID: 'Admin', Label: '{i18n>Admin}', Target: '@UI.FieldGroup#Admin'},
     ],
     FieldGroup#General: {
       Data: [
