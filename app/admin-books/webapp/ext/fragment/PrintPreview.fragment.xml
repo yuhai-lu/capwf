@@ -1,7 +1,7 @@
 <core:FragmentDefinition
     xmlns="sap.m"
     xmlns:core="sap.ui.core">
-    <VBox class="sapUiSmallMargin" width="100%">
+    <VBox class="sapUiSmallMargin" width="100%" visible="{= ${printVisible}}">
         <PDFViewer
             source="/admin-books/webapp/resource/sample.pdf"
             isTrustedSource="true"

@@ -102,6 +102,7 @@
                     "PrintPreviewSection": {
                       "template": "capwf.adminbooks.ext.fragment.PrintPreview",
                       "title": "{{printPreview}}",
+                      "visible": "{= ${printVisible}}",
                       "position": {
                         "placement": "After",
                         "anchor": "Admin"

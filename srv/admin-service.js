@@ -30,6 +30,15 @@ module.exports = class AdminService extends cds.ApplicationService { init() {
     }
     req.data.ID = String(maxID + 1)
   })
+  this.after('READ', Books, (books) => {
+    if (Array.isArray(books)) {
+      for (const book of books) {
+        book.printVisible = book.status === 'Approved'
+      }
+    } else if (books) {
+      books.printVisible = books.status === 'Approved'
+    }
+  })
   this.on('request_trigger_wf', Books, async (req) => {
       const { executeHttpRequest } = require('@sap-cloud-sdk/http-client');
       console.log('executeHttpRequest is successfult got')

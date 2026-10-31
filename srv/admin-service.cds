@@ -19,6 +19,7 @@ service AdminService {
     author.name           as authorName  : String,
     genre.name            as genreName   : String,
     currency.code         as currencyCode: String,
+    virtual printVisible: Boolean,
   } actions {
     action request_trigger_wf(ID: String);
     action annotation_trigger_wf();
