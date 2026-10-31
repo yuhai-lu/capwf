@@ -19,3 +19,6 @@ mta_archives/
 @cds-models
 .env
 app/router/*
+.vscode/settings.json
+db.sqlite-shm
+db.sqlite-wal
