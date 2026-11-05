@@ -16,6 +16,11 @@ service CatalogService {
 
   /** For display in details pages */
   @readonly
+ @restrict: [{
+  grant: ['READ'],
+  to: 'bookshop_administrator',
+  where: (author-ID = 107)
+}]
   entity Books       as
     projection on my.Books {
       *,
@@ -25,7 +30,7 @@ service CatalogService {
       createdBy,
       modifiedBy
     }
-    where status = 'Approved';
+    ;
 
   action submitOrder(book: Books:ID, quantity: Integer) returns {
     stock : Integer
