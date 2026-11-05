@@ -11,11 +11,13 @@
   },
   "devDependencies": {
     "@cap-js/sqlite": "^2",
-    "@sap/cds-dk": "^9"
+    "@sap/cds-dk": "^9",
+    "cds-plugin-ui5": "^0.13.0"
   },
   "scripts": {
     "start": "cds-serve",
-    "prepare:router": "node scripts/prepare-router.js"
+    "prepare:router": "node scripts/prepare-router.js",
+    "watch-project1": "cds watch --open project1/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "private": true,
   "cds": {
@@ -39,5 +41,11 @@
         "model": "srv/external/us10.bd31c2a7trial.wfcap1.wfcap1"
       }
     }
-  }
+  },
+  "workspaces": [
+    "app/*"
+  ],
+  "sapux": [
+    "app/project1"
+  ]
 }
