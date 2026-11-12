@@ -24,13 +24,28 @@ service CatalogService {
   entity Books       as
     projection on my.Books {
       *,
-      author.name as author
+      author.name as author,
+      case
+        when weekDay is null then title
+        else '您输入的是' || weekDay
+      end as headerTitle : String
     }
     excluding {
       createdBy,
       modifiedBy
     }
-    ;
+    where status = 'Approved'
+    actions {
+      @Common.SideEffects.TargetProperties: ['in/weekDay', 'in/headerTitle']
+      action testWeekDay(
+        @mandatory
+        @assert.range
+        weekDay: my.WeekDay
+      ) returns Books;
+    };
+
+  @readonly
+  entity WeekDays as projection on my.WeekDays;
 
   action submitOrder(book: Books:ID, quantity: Integer) returns {
     stock : Integer

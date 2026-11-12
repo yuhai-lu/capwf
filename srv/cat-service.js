@@ -3,7 +3,15 @@ const cds = require('@sap/cds')
 module.exports = class CatalogService extends cds.ApplicationService { init() {
 
   const { Books } = cds.entities('sap.capire.bookshop')
-  const { ListOfBooks } = this.entities
+  const { ListOfBooks, Books: CatalogBooks } = this.entities
+
+  this.on('testWeekDay', CatalogBooks, async req => {
+    const book = await SELECT.one.from(req.subject).columns('ID')
+    if (!book) return req.reject(404, 'Book not found')
+
+    await UPDATE(Books, book.ID).with({ weekDay: req.data.weekDay })
+    return SELECT.one.from(CatalogBooks, book.ID)
+  })
 
   // Add some discount for overstocked books
   this.after('each', ListOfBooks, book => {

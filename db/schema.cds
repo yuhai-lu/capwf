@@ -17,6 +17,7 @@ entity Books : managed {
       stock    : Integer;
       price    : Price;
       currency : Currency;
+      weekDay  : WeekDay;
 }
 
 entity Authors : managed {
@@ -38,6 +39,21 @@ entity Genres : cuid, sap.common.CodeList {
 }
 
 type Price : Decimal(9, 2);
+
+type WeekDay : String(9) enum {
+  Sunday;
+  Monday;
+  Tuesday;
+  Wednesday;
+  Thursday;
+  Friday;
+  Saturday;
+}
+
+entity WeekDays {
+  key code  : WeekDay;
+      order : Integer;
+}
 
 
 // --------------------------------------------------------------------------------

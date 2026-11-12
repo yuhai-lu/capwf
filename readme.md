@@ -5,6 +5,20 @@ cds
 
 Excel to be done later
 
+## Week day action in Browse Books
+
+Open an approved book in **Browse Books** (`#Books-display`) and click **Test**
+(**测试** in Chinese). In the action dialog, choose **Week Day** from Sunday
+through Saturday and confirm to execute the action. The Object Page header
+then displays `您输入的是Monday` (using the selected day). The selection is saved
+per book and remains after refreshing; the book's title is not changed.
+Before a day is selected, the header continues to display the book title.
+Canceling the dialog does not change the saved selection.
+
+The database schema now includes `Books.weekDay` and the `WeekDays` code list.
+Apply the normal CAP database deployment before running against an existing
+database, including the new code-list CSV data.
+
 # Steps
 1. Check HANA status [link](https://bd31c2a7trial.hana-tooling.ingress.orchestration.prod-us10.hanacloud.ondemand.com/)
 2. Trigger WF in WF: Click [link](https://bd31c2a7trial-dev-capwf.cfapps.us10-001.hana.ondemand.com/fiori-apps.html#Books-manage)

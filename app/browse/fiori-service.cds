@@ -8,8 +8,17 @@ annotate CatalogService.Books with @(UI : {
   HeaderInfo        : {
     TypeName        : '{i18n>Book}',
     TypeNamePlural  : '{i18n>Books}',
+    Title           : {Value : headerTitle},
     Description     : {Value : author}
   },
+  Identification    : [
+    {Value: title},
+    {
+      $Type: 'UI.DataFieldForAction',
+      Action: 'CatalogService.testWeekDay',
+      Label: '{i18n>TestWeekDay}'
+    }
+  ],
   HeaderFacets      : [{
     $Type  : 'UI.ReferenceFacet',
     Label  : '{i18n>Description}',
@@ -29,6 +38,28 @@ annotate CatalogService.Books with @(UI : {
     },
   ]},
 });
+
+annotate CatalogService.Books actions {
+  testWeekDay(
+    weekDay @(
+      title: 'Week Day',
+      Common.ValueListWithFixedValues: true,
+      Common.ValueList: {
+        CollectionPath: 'WeekDays',
+        PresentationVariantQualifier: 'WeekDayOrder',
+        Parameters: [{
+          $Type: 'Common.ValueListParameterInOut',
+          LocalDataProperty: weekDay,
+          ValueListProperty: 'code'
+        }]
+      }
+    )
+  );
+};
+
+annotate CatalogService.WeekDays with @UI.PresentationVariant #WeekDayOrder: {
+  SortOrder: [{Property: order, Descending: false}]
+};
 
 
 ////////////////////////////////////////////////////////////////////////////
